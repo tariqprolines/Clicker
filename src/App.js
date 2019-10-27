@@ -1,25 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{Suspense, lazy, Fragment} from 'react';
 import './App.css';
+// import Head from './components/Head';
+// import Clicker from './components/Clicker'
+const Head = lazy(() => import('./components/Head'));
+const Clicker= lazy(() => import('./components/Clicker'));
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return (<Fragment>
+     <Suspense fallback={<div>Loading...</div>}>
+              <Head />
+              <Clicker />
+      </Suspense>         
+          </Fragment>
   );
 }
 
